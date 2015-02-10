@@ -115,8 +115,6 @@ void getCash(int cash, int* oneHundred, int* fifty, int* twenty, int* ten,
 			++*one;
 		}
 	}
-
-	printf("After all loops cash = %d\n", cash);
 }
 
 void getCoins(float change, int* quarter, int* dime, int* nickel, int* penny)
@@ -165,8 +163,6 @@ void getCoins(float change, int* quarter, int* dime, int* nickel, int* penny)
 			++*penny;
 		}
 	}
-
-	printf("After all loops change = %d\n", tenChange);
 }
 
 int main(void)
@@ -201,24 +197,32 @@ int main(void)
 	// to give to the customer and return each
 	getCash(cash, &oneHundred, &fifty, &twenty, &ten, &five, &one);
 
+	// Print the difference of the two denominations.
+	printf("Difference = $%.2f\n", dif);
+
 	// Print the number of bills to give to the customer
 	if(oneHundred >= 1)
-	printf("Give the customer %d Hundred doller bill(s)!\n", oneHundred);
+		printf("Give the customer %d Hundred doller bill(s)!\n", oneHundred);
 
 	if(fifty >= 1)
-	printf("Give the customer %d Fifty doller bill(s)!\n", fifty);
+		printf("Give the customer %d Fifty doller bill(s)!\n", fifty);
 
 	if(twenty >= 1)
-	printf("Give the customer %d Twenty doller bill(s)!\n", twenty);
+		printf("Give the customer %d Twenty doller bill(s)!\n", twenty);
 
 	if(ten >= 1)
-	printf("Give the customer %d Ten doller bill(s)!\n", ten);
+		printf("Give the customer %d Ten doller bill(s)!\n", ten);
 
 	if(five >= 1)
-	printf("Give the customer %d Five doller bill(s)!\n", five);
+		printf("Give the customer %d Five doller bill(s)!\n", five);
 
 	if(one >= 1)
-	printf("Give the customer %d One doller bill(s)!\n", one);
+		printf("Give the customer %d One doller bill(s)!\n", one);
+
+	// Print a seperator between cash, and change
+	// making it easier to read
+	if(cash >= 1 && change > 0)
+		printf("--- ---\n");
 
 	// Initalize the pointers from the cash function to 0 in order
 	// to remove the possiblility that they next function (coins)
@@ -234,22 +238,19 @@ int main(void)
 
 	// Print the number of coins to give to the customer
 	if(quarter >= 1)
-	printf("Give the customer %d Quarter(s)\n", quarter);
+		printf("Give the customer %d Quarter(s)\n", quarter);
 
 	if(dime >= 1)
-	printf("Give the customer %d Dime(s)\n", dime);
+		printf("Give the customer %d Dime(s)\n", dime);
 
 	if(nickel >= 1)
-	printf("Give the customer %d Nickel(s)\n", nickel);
+		printf("Give the customer %d Nickel(s)\n", nickel);
 
 	if(penny >= 1)
-	printf("Give the customer %d Penny(s)\n", penny);
+		printf("Give the customer %d Penny(s)\n", penny);
 	
 	// Initialize the pointers from the coin function to 0
 	change = quarter = dime = nickel = penny = 0;
 
-	printf("%d\n", cash);
-	printf("%.2f\n", change);
-	printf("$%.2f\n", dif);
 	return 0;
 }
