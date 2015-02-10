@@ -57,7 +57,11 @@ void getCash(int cash, int* oneHundred, int* fifty, int* twenty, int* ten,
 	}
 
 	// Since cash is > 0 we need to determine the bills to return
-	// to the user
+	// to the user...
+	// For each denomination of bill, check if the cash variable
+	// is greater or equal to that denomination. If it is loop over
+	// the cash variable and until it is less than that denomination
+	// and incremement the variable corresponding to the bill.
 	if(cash >= 100)
 	{
 		while(cash >= 100)
@@ -121,7 +125,11 @@ void getCoins(float change, int* quarter, int* dime, int* nickel, int* penny)
 	// current format of variable change (0.57) into
 	// a easier to work with 57.
 	int tenChange = floor((change * 100) + 0.5);
-	printf("Ten Change Variable = %d\n", tenChange);
+	
+	// For each denomination of coins, check if the change variable
+	// is greater or equal to that denomination. If it is loop over
+	// the change variable and until it is less than that denomination
+	// incremement the variable corresponding to the coin.
 	if(tenChange >= 25)
 	{
 		while(tenChange >= 25)
@@ -212,8 +220,12 @@ int main(void)
 	if(one >= 1)
 	printf("Give the customer %d One doller bill(s)!\n", one);
 
+	// Initalize the pointers from the cash function to 0 in order
+	// to remove the possiblility that they next function (coins)
+	// Will get unwanted values because of a overlap in memory.
 	cash = oneHundred = fifty = twenty = ten = five = one =
 			quarter = dime = nickel = penny = 0;
+
 	// Second send the change variable to the getCoins
 	// function along with pointers for each type of
 	// coin. The function will calculate the number of
@@ -232,6 +244,9 @@ int main(void)
 
 	if(penny >= 1)
 	printf("Give the customer %d Penny(s)\n", penny);
+	
+	// Initialize the pointers from the coin function to 0
+	change = quarter = dime = nickel = penny = 0;
 
 	printf("%d\n", cash);
 	printf("%.2f\n", change);
